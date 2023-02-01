@@ -19,7 +19,7 @@
           </div>
         </div>
         <div v-if="gameStr&&!gameOver"  class="bg-emerald-500" style="position: absolute;" 
-        :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="hit"></div>
+        :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="randomPosition"></div>
     </div>
     <div v-if="gameStr&&!gameOver">{{ x }}</div>
   </div>
