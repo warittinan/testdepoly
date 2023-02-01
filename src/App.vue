@@ -18,8 +18,8 @@
             </div>
           </div>
         </div>
-        <div v-if="gameStr&&!gameOver"  class="bg-emerald-500" style="position: absolute;" 
-        :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="randomPosition"></div>
+        <div v-if="gameStr&&!gameOver" v-show="enemy" class="bg-emerald-500" style="position: absolute;" 
+        :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="hit"></div>
     </div>
     <div v-if="gameStr&&!gameOver">{{ x }}</div>
   </div>
@@ -34,8 +34,9 @@ const gameStr = ref(false)
 const targetTop = ref('100')
 const targetleft = ref('500')
 const gameOver = ref(false)
-
-
+const scoreHit = ref(0)
+const x = ref(5)
+const enemy = ref(true)
 
 function start() {
   startBtn.value = true
@@ -45,12 +46,13 @@ function reset(){
   startBtn.value = false
   gameOver.value = false
   gameStr.value = false
-
+  scoreHit.value = 0
+  
 }
 
 function gameStart(){
   gameStr.value = true
-
+  timer()
 }
 
 function diffical(diffi){
@@ -70,10 +72,14 @@ function diffical(diffi){
     default:
       break;
   }
-
+  x.value = 10
   console.log(diff.value)
 }
-
+function hit() {
+  
+  scoreHit.value++
+  enemy.value = false
+}
 
 function randomPosition(){
   targetTop.value = `${Math.floor(Math.random()*400)}`
@@ -83,9 +89,24 @@ function randomPosition(){
   console.log(targetleft.value)
 }
 
+function eJump(time){
+  let textx = setInterval(() => {
+    randomPosition()
+    while(x.value ==0){
+    return clearInterval(textx)}    
+  }, time);
+}
 
-
-
+function timer() {
+  let test = setInterval(() => {    
+      console.log(--x.value) 
+      while(x.value ==0){
+        gameOver.value = true
+    return clearInterval(test)
+  }
+  }, 1000);
+ 
+}  
 
 </script>
 
