@@ -22,6 +22,7 @@
         :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="hit"></div>
     </div>
     <div v-if="gameStr&&!gameOver">{{ x }}</div>
+    <button class="btn" @click="print">กด</button>
   </div>
 </template>
 
@@ -37,6 +38,8 @@ const gameOver = ref(false)
 const scoreHit = ref(0)
 const x = ref(5)
 const enemy = ref(true)
+const winWidth = ref(window.innerWidth)
+window.addEventListener('resize',()=>winWidth.value = window.innerWidth)
 
 function start() {
   startBtn.value = true
@@ -49,7 +52,9 @@ function reset(){
   scoreHit.value = 0
   
 }
-
+function print(){
+  console.log(winWidth.value);
+}
 function gameStart(){
   gameStr.value = true
   timer()
@@ -83,7 +88,7 @@ function hit() {
 
 function randomPosition(){
   targetTop.value = `${Math.floor(Math.random()*400)}`
-  targetleft.value = `${Math.floor(Math.random()*1890)}`
+  targetleft.value = `${Math.floor(Math.random()*winWidth.value)}`
   enemy.value = true
   console.log(targetTop.value)
   console.log(targetleft.value)
