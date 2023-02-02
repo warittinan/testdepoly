@@ -22,7 +22,7 @@
         :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="hit"></div>
     </div>
     <div v-if="gameStr&&!gameOver">{{ x }}</div>
-    <button class="btn" @click="print">กด</button>
+    <button class="btn" @click="print">press</button>
   </div>
 </template>
 
