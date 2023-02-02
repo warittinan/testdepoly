@@ -69,12 +69,12 @@
               <!-- <div class=" w-96 h-screen bg-red-500 flex ">
 
               </div> -->
-              <div class=" flex  h-full w-full">
-                <div class="  flex flex-col  bg-white h-full w-full ">
+              <div class=" flex  h-screen w-screen">
+                <div class="  flex flex-col  bg-white h-full w-1/2 ">
                   asdasdasd
                 </div>
 
-                <div class=" flex   h-full w-full bg-teal-600 ">
+                <div class=" flex   h-full w-1/2 bg-teal-600 ">
                   
                 </div> 
                </div>
