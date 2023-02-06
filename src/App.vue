@@ -147,13 +147,14 @@
       </div>
 
       <!-- game -->
-      <div v-if="gameStr" class="h-screen bg-gray-400 w-full rounded-2xl" :class="gameStr == true ? CROSSHAIR : ''"
-        @click="totalClick">
-        <div class="flex flex-col">
-          <div v-if="gameStr && !gameOver" class="flex justify-end">
-            <!--Timer-->
-            <div class="bg-black m-4 p-3 border-8 rounded-2xl">
-              <h1 class="text-white">Timer: {{ x }}</h1>
+      <div v-if="gameStr" class="h-screen bg-gray-400 w-full rounded-2xl" :class="[CROSSHAIR]">
+        <div v-if="!gameOver" class="h-screen" @click="totalClick">
+          <div class="flex flex-col">
+            <div v-if="gameStr && !gameOver" class="flex justify-end">
+              <!--Timer-->
+              <div class="bg-black m-4 p-3 border-8 rounded-2xl">
+                <h1 class="text-white">Timer: {{ x }}</h1>
+              </div>
             </div>
           </div>
         </div>
@@ -164,10 +165,6 @@
           </div>
           <div class="h-full flex flex-row justify-around items-end mt-36">
             <div class="flex flex-col items-start space-y-8">
-              <div
-                class="btn rounded-2xl p-4 hover:border-white border-white border-8 h-20 w-64 text-center text-2xl pointer-events-auto">
-                REPLAY
-              </div>
               <div
                 class="btn rounded-2xl p-4 hover:border-white border-white border-8 h-20 w-64 text-center text-2xl pointer-events-auto"
                 @click="reset">
@@ -214,7 +211,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-32">
-                  <h1 class="text-6xl font-bold text-black">{{ smiss- scoreHit }}</h1>
+                  <h1 class="text-6xl font-bold text-black">{{ clickT- scoreHit }}</h1>
                 </div>
               </div>
             </div>
@@ -226,7 +223,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-32">
-                  <h1 class="text-6xl font-bold text-black">{{ hiy }}</h1>
+                  <h1 class="text-6xl font-bold text-black">{{ scrore }}</h1>
                 </div>
               </div>
             </div>
@@ -289,7 +286,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-16">
-                  <h1 class="text-3xl font-bold text-black">{{ smiss- scoreHit }}</h1>
+                  <h1 class="text-3xl font-bold text-black">{{ clickT- scoreHit }}</h1>
                 </div>
               </div>
             </div>
@@ -301,7 +298,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-16">
-                  <h1 class="text-3xl font-bold text-black">{{ hiy }}</h1>
+                  <h1 class="text-3xl font-bold text-black">{{ scrore }}</h1>
                 </div>
               </div>
             </div>
@@ -311,7 +308,7 @@
           position: 'absolute',
           top: targetTop + 'px',
           left: targetleft + 'px',
-        }" :class="diff" @click="hit"></div>
+        }" :class="diff" @click="[hit(),totalClick()]"></div>
       </div>
     </div>
   </div>
@@ -333,7 +330,7 @@ const winWidth = ref(window.innerWidth);
 const cross = ref(false);
 const bg = ref(false);
 const CrossColor = ref("Black");
-const smiss = ref(0);
+const clickT = ref(0);
 const scrore = ref(0);
 const type = ref('P')
 
@@ -364,7 +361,7 @@ function CrossReset() {
   CrossColor.value = "Black";
 }
 const acc = computed(() => {
-  let accuracy = ((scoreHit.value / smiss.value) * 100).toFixed(2)
+  let accuracy = ((scoreHit.value / clickT.value) * 100).toFixed(2)
   if (accuracy === 'NaN') {
     return 0;
   }
@@ -374,7 +371,7 @@ const acc = computed(() => {
 window.addEventListener("resize", () => (winWidth.value = window.innerWidth));
 
 function totalClick() {
-  smiss.value++;
+  clickT.value++;
 }
 function start() {
   startBtn.value = true;
@@ -391,7 +388,7 @@ function reset() {
   scoreHit.value = 0;
   cross.value = false;
   bg.value = false;
-  smiss.value = -1;
+  clickT.value = 0;
   scrore.value = 0;
 }
 
@@ -416,7 +413,7 @@ function diffical(diffi) {
     default:
       break;
   }
-  x.value = 20;
+  x.value = 3;
 }
 function hit() {
   scoreHit.value++;
