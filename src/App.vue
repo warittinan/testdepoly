@@ -334,7 +334,7 @@ const cross = ref(false);
 const bg = ref(false);
 const CrossColor = ref("Black");
 const smiss = ref(0);
-const hiy = ref(0);
+const scrore = ref(0);
 const type = ref('P')
 
 const crossData = computed(() => {
@@ -392,7 +392,7 @@ function reset() {
   cross.value = false;
   bg.value = false;
   smiss.value = -1;
-  hiy.value = 0;
+  scrore.value = 0;
 }
 
 function gameStart() {
@@ -421,7 +421,7 @@ function diffical(diffi) {
 function hit() {
   scoreHit.value++;
   enemy.value = false;
-  hiy.value = scoreHit.value * 12;
+  scrore.value = scoreHit.value * 12;
 }
 function randomPosition() {
   targetTop.value = `${Math.floor(Math.random() * (500 - 400) + 400)}`;
