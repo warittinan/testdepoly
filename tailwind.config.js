@@ -28,6 +28,23 @@ module.exports = {
         tg:"url(/src/assets/pt/t/Tgreen.png)32 32, default",
         tbu:"url(/src/assets/pt/t/Tblue.png)32 32, default",
       },
+      backgroundImage: {
+        'bg-aimlab':"url('/src/assets/bg/bg-aimlab.jpg')",
+        'bg-training':"url('/src/assets/bg/bg-training.jpg')",
+        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-1.jpg')",
+        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-2.jpg')",
+        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-3.jpg')",
+      },
+      screens: {
+        'tablet': '640px',
+        // => @media (min-width: 640px) { ... }
+
+        'laptop': '1386px',
+        // => @media (min-width: 1024px) { ... }
+
+        'desktop': '1387px',
+        // => @media (min-width: 1280px) { ... }
+      },
     },
   },
   safelist: ['cursor-pb',
@@ -51,5 +68,6 @@ module.exports = {
     'cursor-tg',
     'cursor-tbu'
   ],
+  
   plugins: [require('daisyui')],
 }

@@ -2,14 +2,13 @@
   <div class="w-screen h-screen">
     <div class="w-screen h-screen px-32 bg-slate-800">
       <!--Full Screen-->
-
       <div v-if="!gameStr" class="h-screen bg-gray-400 flex flex-col rounded-2xl">
         <!--Screen-->
         <div v-if="startBtn && !gameStr" class="flex justify-end">
           <!--Back btn-->
           <div class="bg-white m-4 w-28 h-16 rounded-2xl">
             <button
-              class="btn hover:bg-red-500 border border-transparent hover:border-transparent m-2 bg-black text-slate-50 w-24"
+              class="btn hover:bg-red-500 border border-transparent hover:border-transparent m-2 bg-black text-slate-50 w-26"
               @click="reset">
               BACK TO MENU
             </button>
@@ -20,7 +19,6 @@
           <div class="bg-black m-4 p-3 border-8 rounded-2xl">
             <h1 class="text-white">Timer: {{ x }}</h1>
           </div>
-          {{ smiss }}
         </div>
         <!-- ===================================================================================================================== -->
         <div class="flex flex-col items-center my-auto" v-if="!bg">
@@ -33,7 +31,7 @@
               <button id="black"
                 class="btn h-16 hover:border-white hover:bg-emerald-500 border-white rounded-2xl border-8"
                 @click="start">
-                <span class="text-white">Play</span>
+                <span class="text-white">PLAY</span>
               </button>
               <button class="btn h-16 hover:border-white hover:bg-emerald-500 border-white rounded-2xl border-8"
                 @click="Cr">
@@ -48,20 +46,20 @@
                 </h1>
               </div>
               <div v-if="startBtn && !gameStr" class="rounded-2xl bg-white">
-                <button class="btn hover:bg-green-500 border-transparent hover:border-transparent m-2 bg-green-600 w-24"
+                <button class="btn hover:bg-green-500 border-transparent hover:border-transparent m-2 bg-green-600 w-32"
                   @click="[gameStart(), diffical('easy')]">
                   <span class="text-slate-50">easy</span>
                 </button>
               </div>
               <div v-if="startBtn && !gameStr" class="rounded-2xl bg-white">
                 <button
-                  class="btn hover:bg-yellow-400 border-transparent hover:border-transparent m-2 bg-yellow-500 w-24"
+                  class="btn hover:bg-yellow-400 border-transparent hover:border-transparent m-2 bg-yellow-500 w-32"
                   @click="[gameStart(), diffical('normal')]">
                   <span class="text-slate-50">normal</span>
                 </button>
               </div>
               <div v-if="startBtn && !gameStr" class="rounded-2xl bg-white">
-                <button class="btn hover:bg-red-500 border-transparent hover:border-transparent m-2 bg-red-800 w-24"
+                <button class="btn hover:bg-red-500 border-transparent hover:border-transparent m-2 bg-red-800 w-32"
                   @click="[gameStart(), diffical('hard')]">
                   <span class="text-slate-50">hard</span>
                 </button>
@@ -73,22 +71,22 @@
         <!-- ===================================================================================================================== -->
         <div v-if="cross" class="h-full w-full">
           <!--Crosshair Screen-->
-          <div class="flex flex-row h-full w-full">
+          <div class="flex flex-row h-full w-full" :class="CROSSHAIR">
             <div class="flex w-1/2">
               <div class="m-auto bg-white w-[400px] h-[400px]">
                 <div class="absolute m-24 w-[400px] h-[400px] ">
-                  <img :src='gh.image' style="width: 200px; height: 200px" />
+                  <img :src=crossData style="width: 200px; height: 200px" />
                 </div>
               </div>
             </div>
-            <div class="flex flex-col w-1/2">
+            <div class="flex flex-col w-1/2 mt-32">
               <div class="flex justify-center">
                 <div class="rounded-2xl p-4 border-8 bg-black text-white">
                   CHANGE CROSSHAIR
                 </div>
               </div>
               <div class="grid grid-flow-col justify-center">
-                <div class="grid grid-flow-col mt-5">
+                <div class="grid grid-flow-col mt-10">
                   <div class="bg-white w-20 h-20 ml-5">
                     <div class="absolute m-6 w-20 h-20">
                       <img src="./assets/pt/p/pblack.png " style="width: 30px; height: 30px" />
@@ -115,7 +113,7 @@
               <div class="grid mt-5 justify-center">
                 <div class="grid grid-flow-col mt-5 w-[400px]">
                   <div>
-                    <input type="radio" value="P" name="P" v-model="type" class="radio radio-success ml-12"  />
+                    <input type="radio" value="P" name="P" v-model="type" class="radio radio-success ml-12" />
                     <input type="radio" value="X" name="X" v-model="type" class="radio radio-success ml-20 mr-2" />
                     <input type="radio" value="O" name="O" v-model="type" class="radio radio-success ml-16 mr-2" />
                     <input type="radio" value="T" name="T" v-model="type" class="radio radio-success ml-16" />
@@ -124,32 +122,33 @@
               </div>
 
               <!-- cheage color -->
-              <div class="flex-col justify-center">
-                <div class="flex-row rounded-lg mt-32 ml-20">
-                  <input type="radio" id="black" value="Black" v-model="CrossColor" class="radio radio-success"/>
-                  <label for="black" class="text-white m-auto font-bold bth">Black</label>
+              <div class="grid grid-flow-col justify-center">
+                <div class="grid-flow-col rounded-lg mt-32 ">
+                  <input type="radio" id="black" value="Black" v-model="CrossColor" class="radio radio-success" />
+                  <label for="black" class="text-white m-auto font-bold bth text-xl">Black</label>
                   <input type="radio" id="red" value="Red" v-model="CrossColor" class="radio radio-success ml-5" />
-                  <label for="red" class="text-white m-auto font-bold">Red</label>
+                  <label for="red" class="text-white m-auto font-bold text-xl">Red</label>
                   <input type="radio" id="green" value="Green" v-model="CrossColor" class="radio radio-success ml-5" />
-                  <label for="green" class="text-white m-auto font-bold">Green</label>
+                  <label for="green" class="text-white m-auto font-bold text-xl">Green</label>
                   <input type="radio" id="yellow" value="Yellow" v-model="CrossColor"
                     class="radio radio-success ml-5" />
-                  <label for="yellow" class="text-white m-auto font-bold">Yellow</label>
+                  <label for="yellow" class="text-white m-auto font-bold text-xl">Yellow</label>
                   <input type="radio" id="blue" value="Blue" v-model="CrossColor" class="radio radio-success ml-5" />
-                  <label for="blue" class="text-white m-auto font-bold">Blue</label>
+                  <label for="blue" class="text-white m-auto font-bold text-xl">Blue</label>
                 </div>
               </div>
-              <h1 class="text-sky-400">{{ CrossColor }}</h1>
+              <div class="grid grid-flow-col justify-center">
+                <button class=" bg-black border-8 rounded-2xl w-20 text-lg text-white mt-20"
+                  @click="CrossReset">Reset</button>
+              </div>
             </div>
           </div>
         </div>
-        <!-- <div v-if="gameStr&&!gameOver" v-show="enemy" class="bg-emerald-500" style="position: absolute;"
-        :style="{top:targetTop+'px', left:targetleft+'px'}" :class="diff" @click="hit"></div> Hit Box -->
       </div>
 
       <!-- game -->
-      <div v-if="gameStr" class="h-screen bg-gray-400 w-full rounded-2xl " :class="[gh.cursor]" 
-        @click="nh">
+      <div v-if="gameStr" class="h-screen bg-gray-400 w-full rounded-2xl" :class="gameStr == true ? CROSSHAIR : ''"
+        @click="totalClick">
         <div class="flex flex-col">
           <div v-if="gameStr && !gameOver" class="flex justify-end">
             <!--Timer-->
@@ -158,10 +157,10 @@
             </div>
           </div>
         </div>
-        <!--Game Over-->
-        <div v-if="gameOver" class="flex flex-col">
+        <!--Game Over max-->
+        <div v-if="gameOver" class="flex flex-col max-desktop:hidden">
           <div class="flex justify-center">
-            <h1 class="rounded-3xl mt-10 p-8 border-8 bg-black text-3xl px-10">Results</h1>
+            <h class="rounded-3xl mt-10 p-8 border-8 bg-black text-white text-3xl px-10">Results</h>
           </div>
           <div class="h-full flex flex-row justify-around items-end mt-36">
             <div class="flex flex-col items-start space-y-8">
@@ -183,7 +182,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-32">
-                  <h1 class="text-6xl font-bold text-black">{{x}}</h1>
+                  <h1 class="text-6xl font-bold text-black">10:00</h1>
                 </div>
               </div>
               <div class="w-64 h-64 flex justify-center bg-white">
@@ -215,7 +214,7 @@
                   </h1>
                 </div>
                 <div class="absolute m-32">
-                  <h1 class="text-6xl font-bold text-black">{{ smiss }}</h1>
+                  <h1 class="text-6xl font-bold text-black">{{ smiss- scoreHit }}</h1>
                 </div>
               </div>
             </div>
@@ -233,15 +232,87 @@
             </div>
           </div>
         </div>
-
+        <!-- game over laptop -->
+        <div v-if="gameOver" class="flex flex-col laptop:hidden">
+          <div class="flex justify-center">
+            <h class="rounded-3xl mt-10 p-8 border-8 bg-black text-white text-3xl px-10">Results</h>
+          </div>
+          <div class="h-full flex flex-row justify-around items-end mt-36">
+            <div class="flex flex-col items-start space-y-8">
+              <!-- <div
+                class="btn rounded-2xl p-4 hover:border-white border-white border-8 h-20 w-50 text-center text-l pointer-events-auto">
+                REPLAY
+              </div> -->
+              <div
+                class="btn rounded-2xl p-4 hover:border-white border-white border-8 h-20 w-50 text-center text-l pointer-events-auto"
+                @click="reset">
+                BACK TO MENU
+              </div>
+            </div>
+            <div class="flex flex-col space-y-10">
+              <div class="w-40 h-40 flex justify-center bg-white">
+                <div class="w-26 h-16 -mt-7 bg-black">
+                  <h1 class="text-3l text-center items-center p-4 text-white">
+                    TIME
+                  </h1>
+                </div>
+                <div class="absolute m-16">
+                  <h1 class="text-3xl font-bold text-black">10:00</h1>
+                </div>
+              </div>
+              <div class="w-40 h-40 flex justify-center bg-white">
+                <div class="w-26 h-16 -mt-7 bg-black">
+                  <h1 class="text-3l text-center items-center p-4 text-white">
+                    HITS
+                  </h1>
+                </div>
+                <div class="absolute m-16">
+                  <h1 class="text-3xl font-bold text-black">{{ scoreHit }}</h1>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col space-y-10">
+              <div class="w-40 h-40 flex justify-center bg-white">
+                <div class="w-26 h-16 -mt-7 bg-black">
+                  <h1 class="text-3l text-center items-center p-4 text-white">
+                    ACCURACY
+                  </h1>
+                </div>
+                <div class="absolute m-16">
+                  <h1 class="text-3xl font-bold text-black">{{ acc }}%</h1>
+                </div>
+              </div>
+              <div class="w-40 h-40 flex justify-center bg-white">
+                <div class="w-26 h-16 -mt-7 bg-black">
+                  <h1 class="text-3l text-center items-center p-4 text-white">
+                    MISS
+                  </h1>
+                </div>
+                <div class="absolute m-16">
+                  <h1 class="text-3xl font-bold text-black">{{ smiss- scoreHit }}</h1>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-start space-y-10">
+              <div class="w-48 h-48 mb-32 flex justify-center bg-white">
+                <div class="w-26 h-16 -mt-7 bg-black">
+                  <h1 class="text-3l text-center items-center p-4 text-white">
+                    SCORE
+                  </h1>
+                </div>
+                <div class="absolute m-16">
+                  <h1 class="text-3xl font-bold text-black">{{ hiy }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div v-if="gameStr && !gameOver" v-show="enemy" class="bg-emerald-200 rounded-full" :style="{
           position: 'absolute',
           top: targetTop + 'px',
           left: targetleft + 'px',
         }" :class="diff" @click="hit"></div>
       </div>
-      <!-- <div v-if="gameStr&&!gameOver">{{ x }}</div>
-    <button class="btn" @click="print">press</button> -->
     </div>
   </div>
 </template>
@@ -255,33 +326,55 @@ const gameStr = ref(false);
 const targetTop = ref("100");
 const targetleft = ref("500");
 const gameOver = ref(false);
-
-const x = ref(0);
+const scoreHit = ref(0);
+const x = ref('');
 const enemy = ref(true);
 const winWidth = ref(window.innerWidth);
 const cross = ref(false);
 const bg = ref(false);
 const CrossColor = ref("Black");
-const scoreHit = ref(0);
 const smiss = ref(0);
-const hiy = ref("");
+const hiy = ref(0);
 const type = ref('P')
 
-const gh = computed(() => {
-  return data.find((crs)=>crs.type == type.value).color.find((cx)=>cx.id==CrossColor.value)
+const crossData = computed(() => {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].type == type.value) {
+      for (let j = 0; j < data[i].color?.length; j++) {
+        if (data[i].color[j].id === CrossColor.value) {
+          return data[i].color[j].image;
+        }
+      }
+    }
+  }
 })
-
-
+const CROSSHAIR = computed(() => {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].type == type.value) {
+      for (let j = 0; j < data[i].color?.length; j++) {
+        if (data[i].color[j].id === CrossColor.value) {
+          return data[i].color[j].cursor;
+        }
+      }
+    }
+  }
+})
+function CrossReset() {
+  type.value = 'P';
+  CrossColor.value = "Black";
+}
 const acc = computed(() => {
-  return ((scoreHit.value / smiss.value) * 100).toFixed(2);
+  let accuracy = ((scoreHit.value / smiss.value) * 100).toFixed(2)
+  if (accuracy === 'NaN') {
+    return 0;
+  }
+  return accuracy;
 });
+
 window.addEventListener("resize", () => (winWidth.value = window.innerWidth));
 
-function nh() {
-  if (gameOver.value == false) {
-    smiss.value++;
-  }
-  console.log(gh.value.cursor);
+function totalClick() {
+  smiss.value++;
 }
 function start() {
   startBtn.value = true;
@@ -298,7 +391,8 @@ function reset() {
   scoreHit.value = 0;
   cross.value = false;
   bg.value = false;
-  smiss.value = "";
+  smiss.value = -1;
+  hiy.value = 0;
 }
 
 function gameStart() {
@@ -312,23 +406,22 @@ function diffical(diffi) {
       eJump(1200);
       break;
     case "normal":
-      diff.value = "w-10 h-10";
+      diff.value = "w-20 h-20";
       eJump(900);
       break;
     case "hard":
-      diff.value = "w-4 h-4";
+      diff.value = "w-20 h-20";
       eJump(700);
       break;
     default:
       break;
   }
-  x.value = 60;
-  diff.value;
+  x.value = 20;
 }
 function hit() {
   scoreHit.value++;
   enemy.value = false;
-  hiy.value = scoreHit.value * 12 * acc.value;
+  hiy.value = scoreHit.value * 12;
 }
 function randomPosition() {
   targetTop.value = `${Math.floor(Math.random() * (500 - 400) + 400)}`;
