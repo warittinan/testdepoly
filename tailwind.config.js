@@ -29,11 +29,7 @@ module.exports = {
         tbu:"url(/src/assets/pt/t/Tblue.png)32 32, default",
       },
       backgroundImage: {
-        'bg-aimlab':"url('/src/assets/bg/bg-aimlab.jpg')",
-        'bg-training':"url('/src/assets/bg/bg-training.jpg')",
-        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-1.jpg')",
-        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-2.jpg')",
-        'bg-aimlab':"url('/src/assets/bg/bg-aimlab-3.jpg')",
+        'bg-aimlab':"url('/src/assets/bg/logo-1.png')",
       },
       screens: {
         'tablet': '640px',

@@ -2,7 +2,7 @@
   <div class="w-screen h-screen">
     <div class="w-screen h-screen px-32 bg-slate-800">
       <!--Full Screen-->
-      <div v-if="!gameStr" class="h-screen bg-gray-400 flex flex-col rounded-2xl">
+      <div v-if="!gameStr" class="h-screen bg-gray-400 flex flex-col rounded-2xl ">
         <!--Screen-->
         <div v-if="startBtn && !gameStr" class="flex justify-end">
           <!--Back btn-->
@@ -21,9 +21,9 @@
           </div>
         </div>
         <!-- ===================================================================================================================== -->
-        <div class="flex flex-col items-center my-auto" v-if="!bg">
+        <div class="flex flex-col items-center " v-if="!bg">
           <!--Play Screen-->
-
+          <img :class="startBtn==true ? '-mt-24' : '' "  src="./assets/bg/logo-1.png"> 
           <div class="flex flex-col">
             <!--Menu-->
             <div v-if="!startBtn" class="flex flex-col space-y-8">
@@ -40,7 +40,7 @@
             </div>
             <!-- Level btn -->
             <div class="flex flex-col space-y-10" v-if="startBtn && !gameStr && !cross">
-              <div v-if="startBtn && !gameStr" class="rounded-2xl p-4 border-8 bg-black">
+              <div class="rounded-2xl p-4 border-8 bg-black">
                 <h1 class="text-slate-50 text-xl font-bold text-center">
                   LEVEL
                 </h1>
