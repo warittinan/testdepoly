@@ -232,7 +232,6 @@
             </div>
           </div>
         </div>
-
         <div v-if="gameStr && !gameOver" v-show="enemy" class="bg-emerald-200 rounded-full" :style="{
           position: 'absolute',
           top: targetTop + 'px',
@@ -322,7 +321,8 @@ function reset() {
   scoreHit.value = 0;
   cross.value = false;
   bg.value = false;
-  smiss.value = "";
+  clickT.value = 0;
+  scrore.value = 0;
 }
 
 function gameStart() {
@@ -336,23 +336,22 @@ function diffical(diffi) {
       eJump(1200);
       break;
     case "normal":
-      diff.value = "w-10 h-10";
+      diff.value = "w-20 h-20";
       eJump(900);
       break;
     case "hard":
-      diff.value = "w-4 h-4";
+      diff.value = "w-20 h-20";
       eJump(700);
       break;
     default:
       break;
   }
-  x.value = 10;
-  diff.value;
+  x.value = 3;
 }
 function hit() {
   scoreHit.value++;
   enemy.value = false;
-  hiy.value = scoreHit.value * 12;
+  scrore.value = scoreHit.value * 12;
 }
 function randomPosition() {
   targetTop.value = `${Math.floor(Math.random() * (500 - 400) + 400)}`;
