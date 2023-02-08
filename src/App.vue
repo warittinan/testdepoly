@@ -20,7 +20,7 @@
           <div class="bg-black m-4 p-3 border-8 rounded-2xl">
             <h1 class="text-white">Timer: {{ x }}</h1>
           </div>
-          {{ smiss }}
+          
         </div>
         <!-- ===================================================================================================================== -->
         <div class="flex flex-col items-center my-auto" v-if="!bg">
@@ -71,7 +71,7 @@
           </div>
         </div>
         <!-- ===================================================================================================================== -->
-        <div v-if="cross" class="h-full w-full">
+        <div v-if="cross" class="h-full w-full  " :class="CROSSHAIR">
           <!--Crosshair Screen-->
           <div class="flex flex-row h-full w-full">
             <div class="flex w-1/2">
@@ -243,7 +243,7 @@
 </template>
 
 <script setup>
-import data from "./assets/data/data.json";
+import data from "/public/data/data.json";
 import { ref, computed } from "vue";
 const startBtn = ref(false);
 const diff = ref("");
